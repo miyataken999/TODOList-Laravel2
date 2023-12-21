@@ -1,0 +1,132 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background:#f3f4f6;
+    font-family:  Figtree, sans-serif;
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  /* Track */
+::-webkit-scrollbar-track {
+    background: none;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius:20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+  
+.main_container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.title{
+    font-size:3rem;
+    font-weight: 300;
+    margin-top: 7rem;
+    margin-bottom: 4rem;
+}
+::placeholder{
+    color:#a9a9a9;
+}
+.input_container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+    height:45px;
+    width:100%;
+    margin-inline: 20px;
+}
+.input_container>input[type="text"]{
+    box-shadow:1px 1px 20px -7px #777;
+    font-size:1.5rem;
+    padding:0.2em 0.5em;
+    width:600px;
+    border-radius: 10px;
+    outline: none;
+    border:none;
+}
+.input_container>input[type="submit"]{
+    
+    background-color:#777;
+    color:#fff;
+    outline: none;
+    border:none;
+    padding:0.5rem 1rem;
+    border-radius: 50px;
+    margin-left:20px;
+    font-size: 1.3rem;
+    
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
+
+#list_container{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    height:300px;
+    overflow:hidden scroll;
+    width: 600px;
+}
+
+#list_container>.item{
+    width:80%;
+    background-color: #fff;
+    margin:1rem 0;
+    padding:1rem 2rem;
+    border-radius:50px;
+    box-shadow:1px 1px 20px -7px #777;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btn_container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:1.5rem; 
+}
+
+.btn_container .delete_btn{
+    /* height:100%;  */
+    aspect-ratio:1;
+    color:red;
+    margin-left:20px;
+}
+.btn_container .check_btn{
+    height:inherit;     
+    aspect-ratio:1;
+    margin-left:20px;
+}
+.btn_container .delete_btn:hover ,.btn_container .check_btn:hover{
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 768px) {
+    body {
+      background-color: lightblue;
+    }
+    .input_container>input[type="text"]{
+        width:60%;    
+    }
+    #list_container{
+        width:90%;
+    }
+  }
