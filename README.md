@@ -8,6 +8,8 @@ pinned: false
 app_port: 8000
 ---
 
+hosted on hugging face space : https://anuj-panthri-todolist-laravel.hf.space/
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -78,7 +80,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 
-hosted on hugging face space : 
 
 ## Steps to Run
 
