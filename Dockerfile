@@ -11,6 +11,9 @@ RUN composer install;
 RUN php artisan key:generate;
 RUN php artisan migrate --force;
 
+RUN ls -lh
+
+RUN chmod -R 775 public
 RUN chmod -R 775 storage
 RUN chmod -R 775 bootstrap/cache
 
