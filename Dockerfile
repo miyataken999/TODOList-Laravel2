@@ -13,9 +13,9 @@ RUN php artisan migrate --force;
 
 RUN ls -lh
 
-RUN chmod -R 775 public
-RUN chmod -R 775 storage
-RUN chmod -R 775 bootstrap/cache
+RUN chmod -R 777 public
+RUN chmod -R 777 storage
+RUN chmod -R 777 bootstrap/cache
 
 RUN ls -lh
 
