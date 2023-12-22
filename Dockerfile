@@ -1,4 +1,4 @@
-FROM bitnami/laravel;
+FROM composer
 
 
 EXPOSE 8000
