@@ -64,3 +64,26 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+---
+title: TODOList Laravel
+emoji: 👀
+colorFrom: yellow
+colorTo: red
+sdk: docker
+pinned: false
+app_port:8000
+---
+
+hosted on hugging face space : 
+
+## Steps to Run
+
+1. git clone this repo
+1. cp .env.example .env
+1. composer install
+1. php artisan key:generate
+1. make database changes to .env file(skip it as I have updated .env.example)
+1. php artisan migrate
+1. php artisan serve
