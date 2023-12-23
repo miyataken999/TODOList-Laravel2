@@ -33,6 +33,7 @@ class TODOListController extends Controller
 
         return redirect("/");
     }
+    
     public function deleteItem(Request $request){
         // \Log::info(json_encode($request->all()));
         $listitem = ListItem::where("id",$request->id)->first();
