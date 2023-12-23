@@ -1,3 +1,15 @@
+---
+title: TODOList Laravel
+emoji: 👀
+colorFrom: yellow
+colorTo: red
+sdk: docker
+pinned: false
+app_port: 8000
+---
+
+hosted on hugging face space : https://anuj-panthri-todolist-laravel.hf.space/
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -64,3 +76,17 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
+
+## Steps to Run
+
+1. git clone this repo
+1. cp .env.example .env
+1. composer install
+1. php artisan key:generate
+1. make database changes to .env file(skip it as I have updated .env.example)
+1. php artisan migrate
+1. php artisan serve
