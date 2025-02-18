@@ -5,6 +5,15 @@ RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libsqlite3-dev \
+    wget \
+    libicu-dev \
+    libzip-dev \
+    libonig-dev \
+    libxml2-dev \
+    && docker-php-ext-install \
+    pdo_mysql \
+    mbstring \
+    zip \    
     && docker-php-ext-install pdo pdo_sqlite
 
 # 2) Composer のインストール
