@@ -1,4 +1,4 @@
-FROM composer:2.5-php8.3
+FROM composer:2.5-php8.2
 
 
 EXPOSE 8000
