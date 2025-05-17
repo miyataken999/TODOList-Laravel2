@@ -48,11 +48,11 @@ RUN mkdir -p database \
 # 9) マイグレーション（開発・デモ用）
 RUN php artisan migrate --force || true
 
-RUN export HOME=/root
-RUN git config --global user.email "kenken999@users.noreply.huggingface.co"
+#RUN export HOME=/root
+#RUN git config --global user.email "kenken999@users.noreply.huggingface.co"
 
-RUN git config --system user.email "kenken999@users.noreply.huggingface.co"
-RUN git config --system user.name "Your Name"
+#RUN git config --system user.email "kenken999@users.noreply.huggingface.co"
+#RUN git config --system user.name "Your Name"
 
 # 10) ポート公開 & 実行コマンド
 EXPOSE 8000
