@@ -51,7 +51,7 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
 
 # git の設定（グローバルが機能するNode.jsベースなのでOK）
 RUN git config --global user.email "kenken999@users.noreply.huggingface.co"
-
+#
 # /app ディレクトリ全体に書き込み権限を付与
 RUN chmod -R 777 /app
 
