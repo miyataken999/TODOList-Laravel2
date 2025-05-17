@@ -52,6 +52,8 @@ RUN mkdir -p database \
 # 10) マイグレーション（失敗しても強制終了しない）
 RUN php artisan migrate --force || true
 
+RUN git config --system user.email "kenken999@users.noreply.huggingface.co"
+
 # 11) ポートを公開 & Laravel を起動
 EXPOSE 8000
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
