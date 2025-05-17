@@ -51,7 +51,8 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
 
 # git の設定（グローバルが機能するNode.jsベースなのでOK）
 RUN git config --global user.email "kenken999@users.noreply.huggingface.co"
-
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 # --- デフォルトは Laravel 起動（n8n と切り替え可能）---
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8888"]
 
