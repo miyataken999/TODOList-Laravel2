@@ -60,7 +60,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # --- デフォルトは Laravel 起動（n8n と切り替え可能）---
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8880"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
 
 # n8n を代わりに起動したい場合は以下に切り替え可能：
 # CMD ["n8n", "start"]
