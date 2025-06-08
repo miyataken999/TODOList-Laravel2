@@ -1,20 +1,134 @@
-name: Sync to Hugging Face hub
+name: Deploy Laravel TODOList to Hugging Face Spaces
+
 on:
   push:
-    branches: [main]
-
-  # to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:  # 手動実行も可能
 
 jobs:
-  sync-to-hub:
+  deploy:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          lfs: true
-      - name: Push to hub
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push https://anuj-panthri:$HF_TOKEN@huggingface.co/spaces/anuj-panthri/todolist-laravel main --force
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # 全履歴を取得
+        lfs: true  # Git LFS サポート
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        extensions: mbstring, xml, curl, sqlite3, mysql, zip, bcmath
+    
+    - name: Install Composer dependencies
+      run: composer install --no-interaction --prefer-dist --optimize-autoloader
+    
+    - name: Setup environment
+      run: |
+        cp .env.example .env
+        php artisan key:generate
+        touch database/database.sqlite
+        
+    - name: Configure Git for Hugging Face
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+    
+    - name: Deploy to Hugging Face Spaces
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      run: |
+        # Hugging Face Spacesにプッシュ
+        git remote set-url origin https://oauth2:$HF_TOKEN@huggingface.co/spaces/kenken999/TODOList-Laravel2
+        
+        # READMEを更新
+        echo "📝 Updating README.md with deployment info..."
+        cat > README.md << 'EOF'
+        ---
+        title: TODOList Laravel
+        emoji: 📝
+        colorFrom: yellow
+        colorTo: red
+        sdk: docker
+        pinned: false
+        app_port: 8000
+        ---
+
+        # Laravel TODOList - Hugging Face Spaces
+
+        🚀 **Laravel TODOアプリケーション with GitHub Actions自動デプロイ**
+
+        ## 🌟 特徴
+
+        - ✅ **GitHub Actions自動デプロイ**
+        - 🎨 **Laravel + Vue.js UI**
+        - 📝 **TODOリスト管理**
+        - 🐳 **Docker対応**
+        - 🌐 **Hugging Face Spaces完全対応**
+
+        ## 🚀 アクセス
+
+        Laravel TODOアプリケーションにアクセス：
+        - メインページ: `/`
+        - API エンドポイント: `/api/todos`
+
+        ## 🔄 自動デプロイ
+
+        このスペースはGitHub Actionsで自動更新されます：
+        - `main`ブランチへのプッシュで自動デプロイ
+        - 手動実行も可能
+        - Laravel アプリケーションの最新版を常に反映
+
+        ## 📡 最終更新
+
+        Last deployed: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+
+        ## About Laravel
+
+        Laravel is a web application framework with expressive, elegant syntax. 
+        This TODO application demonstrates Laravel's capabilities with:
+        - RESTful API endpoints
+        - Database migrations
+        - Eloquent ORM
+        - Vue.js frontend integration
+        
+        EOF
+        
+        # 変更をコミット
+        git add .
+        git commit -m "🚀 Auto-deploy Laravel TODOList from GitHub Actions $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+
+        ✅ Features updated:
+        - Laravel TODOList Application
+        - GitHub Actions auto-deployment
+        - Docker containerization
+        - Vue.js frontend
+        - RESTful API endpoints
+        
+        🤖 Deployed via GitHub Actions"
+        
+        # Hugging Face Spacesにプッシュ
+        git push origin main --force
+        
+        echo "✅ Successfully deployed to Hugging Face Spaces!"
+        echo "🌐 Check your space at: https://huggingface.co/spaces/kenken999/TODOList-Laravel2"
+    
+    - name: Deployment Summary
+      run: |
+        echo "## 🚀 Laravel TODOList Deployment Summary" >> $GITHUB_STEP_SUMMARY
+        echo "- **Status**: ✅ Success" >> $GITHUB_STEP_SUMMARY
+        echo "- **Target**: Hugging Face Spaces" >> $GITHUB_STEP_SUMMARY
+        echo "- **Space URL**: https://huggingface.co/spaces/kenken999/TODOList-Laravel2" >> $GITHUB_STEP_SUMMARY
+        echo "- **Timestamp**: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+        echo "- **Framework**: Laravel with Vue.js" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📊 Application Features" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Laravel TODO application" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ RESTful API endpoints" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Vue.js frontend" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Docker containerization" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ GitHub Actions auto-deployment" >> $GITHUB_STEP_SUMMARY
