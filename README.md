@@ -1,6 +1,6 @@
 ---
 title: TODOList Laravel
-emoji: 👀
+emoji: 📝
 colorFrom: yellow
 colorTo: red
 sdk: docker
@@ -8,7 +8,7 @@ pinned: false
 app_port: 8000
 ---
 
-hosted on hugging face space : https://anuj-panthri-todolist-laravel.hf.space/
+🚀 **Auto-deployed via GitHub Actions** - hosted on Hugging Face Spaces: https://huggingface.co/spaces/kenken999/TODOList-Laravel2
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
